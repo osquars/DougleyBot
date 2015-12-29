@@ -63,7 +63,7 @@ None of the commands given here are required for the bot to run.
 */
 
 var commands = {
-  "gif": {
+  /*"gif": {
     name: "gif",
     description: "Returns a random gif matching the tags passed.",
     extendedhelp: "I will search Giphy for a gif matching your tags.",
@@ -78,7 +78,7 @@ var commands = {
         }
       });
     }
-  },
+  },*/
   "maintenance-mode": {
     name: "maintenance-mode",
     description: "Enables maintenance mode.",
@@ -128,14 +128,14 @@ var commands = {
       });
     }
   },
-  "devs": {
+  /*"devs": {
     name: "devs",
     description: "Prints the devs of DougleyBot to the channel.",
     extendedhelp: "This will print the Discord ID's from the developers of DougleyBot to the channel.",
     process: function(bot, msg, suffix) {
       bot.sendMessage(msg.channel, "Made with love by <@107904023901777920> and <@108125505714139136>. <3 <@110147170740494336> did stuff too.");
     }
-  },
+  },*/
   "status": {
     name: "status",
     description: "Prints the stats from the instance into the chat.",
@@ -155,7 +155,8 @@ var commands = {
     description: "Gives a friendly greeting, including github link.",
     extendedhelp: "I'll respond to you with hello along with a GitHub link, handy!",
     process: function(bot, msg) {
-      bot.sendMessage(msg.channel, "Hello " + msg.sender + "! I'm " + bot.user.username + ", help me grow by contributing to my GitHub: https://github.com/SteamingMutt/DougleyBot");
+      //bot.sendMessage(msg.channel, "Hello " + msg.sender + "! I'm " + bot.user.username + ", help me grow by contributing to my GitHub: https://github.com/SteamingMutt/DougleyBot");
+      bot.sendMessage(msg.channel, "Hello " + msg.sender + "! I'm " + bot.user.username + ", help me grow by contributing to GitHub: https://github.com/SteamingMutt/DougleyBot");
     }
   },
   "server-info": {
@@ -429,7 +430,7 @@ var commands = {
       Logger.log("debug", "My status has been changed to online.");
     }
   },
-  "youtube": {
+  /*"youtube": {
     name: "youtube",
     description: "Gets a Youtube video matching given tags.",
     extendedhelp: "I'll search YouTube for a video matching your given tags.",
@@ -437,7 +438,7 @@ var commands = {
     process: function(bot, msg, suffix) {
       youtube_plugin.respond(suffix, msg.channel, bot);
     }
-  },
+  },*/
   "say": {
     name: "say",
     description: "Copies text, and repeats it as the bot.",
@@ -504,7 +505,7 @@ var commands = {
       }
     }
   },
-  "image": {
+  /*"image": {
     name: "image",
     description: "Gets image matching tags from Google.",
     extendedhelp: "I'll search teh interwebz for a picture matching your tags.",
@@ -539,7 +540,7 @@ var commands = {
       			bot.sendMessage(msg.channel, randResult.title + '\n' + randResult.link);
       		});
       Logger.log("debug", "I've looked for images of " + suffix + " for " + msg.sender.username);
-  }},
+  }},*/
   "pullanddeploy": {
     name: "pullanddeploy",
     description: "Bot will perform a git pull master and restart with the new code.",
@@ -606,6 +607,17 @@ var commands = {
           bot.sendMessage(msg.channel, "*This works best when I have the permission to delete messages!*");
         }}
       });
+    }
+  },
+  "chmsg": {
+    name: "chmsg",
+    extendedhelp: "Send a message to pointed channel",
+    usage: '<channel>|<text>',
+    process: function(bot, msg, suffix) {
+      var tags = suffix.split('|');
+      var channelto = tags[0].replace(/[^0-9]/g, '');
+      bot.sendMessage(channelto,tags[1]);
+      Logger.log("info", suffix);
     }
   },
   "log": {
@@ -714,7 +726,7 @@ var commands = {
       }
     }
   },
-  "stock": {
+  /*"stock": {
     name: "stock",
     extendedhelp: "I'll search Yahoo! Finance for the price of the stock you've given me.",
     usage: "<stockticker>",
@@ -732,7 +744,7 @@ var commands = {
         }
       });
     }
-  },
+  },*/
   "rss": {
     name: "rss",
     extendedhelp: "I'll list all of the avalible RSS feeds, just for you.",
@@ -837,7 +849,7 @@ var commands = {
       });
     }
   },
-  "urbandictionary": {
+  /*"urbandictionary": {
     name: "urbandictionary",
     description: "Search Urban Dictionary, one of the original AIDS of the internet!",
     extendedhelp: "Every wanted to know what idiots on the internet thinks something means? Here ya go!",
@@ -857,7 +869,7 @@ var commands = {
         }
       });
     }
-  },
+  },*/
   "xkcd": {
     name: "xkcd",
     description: "Returns a random (or chosen) xkcd comic",
@@ -955,7 +967,7 @@ var commands = {
       });
     }
   },
-  "csgoprice": {
+  /*"csgoprice": {
     name: "csgoprice",
     description: "Gives the price of a CSGO skin. Very picky regarding capitalization and punctuation.",
     extendedhelp: "I'll give you the price of a CS:GO skin.",
@@ -980,7 +992,7 @@ var commands = {
         }
       });
     }
-  },
+  },*/
   "dice": {
     name: "dice",
     description: "Dice roller yay!",
