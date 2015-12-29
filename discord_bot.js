@@ -613,6 +613,7 @@ var commands = {
     name: "chmsg",
     extendedhelp: "Send a message to pointed channel",
     usage: '<channel>|<text>',
+    adminOnly: true,
     process: function(bot, msg, suffix) {
       var tags = suffix.split('|');
       var channelto = tags[0].replace(/[^0-9]/g, '');
