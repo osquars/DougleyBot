@@ -1017,7 +1017,7 @@ var commands = {
       });
     }
   },
-  "imdb": {
+  /*"imdb": {
     name: "imdb",
     description: "Returns information for an IMDB title",
     extendedhelp: "I'll search through IMDb for a movie matching your given tags, and post my finds in the channel.",
@@ -1050,7 +1050,7 @@ var commands = {
         bot.sendMessage(msg.channel, "Usage: !imdb [title]");
       }
     }
-  },
+  },*/
   "fancyinsult": {
     name: "fancyinsult",
     description: "Insult your friends, in style.",
