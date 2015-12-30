@@ -88,7 +88,7 @@ var commands = {
     process: function(bot, msg, suffix) {
       Logger.log("warn", "Maintenance mode activated for " + suffix + " seconds.");
       bot.sendMessage(msg.channel, "The bot is now in maintenance mode, commands **will NOT** work!");
-      bot.setPlayingGame(525);
+      //bot.setPlayingGame(525);
       bot.setStatusIdle();
       maintenance = "true";
       setTimeout(continueExecution, Math.round(suffix * 1000));
@@ -96,7 +96,7 @@ var commands = {
       function continueExecution() {
         Logger.log("info", "Maintenance ended.");
         bot.sendMessage(msg.channel, "Maintenance period ended, returning to normal.");
-        bot.setPlayingGame(308);
+        //bot.setPlayingGame(308);
         bot.setStatusOnline();
         maintenance = null;
       }
@@ -1094,7 +1094,38 @@ var commands = {
         bot.sendMessage(msg.channel, "created alias " + name);
       }
     }
-  }
+  }/*,
+    "reminder-create": {
+        name: "reminder-create",
+        description: "Creates reminder message to a channel.",
+        extendedhelp: "...",
+        usage: "<channel>|<text>",
+        adminOnly: true,
+        process: function(bot, msg, suffix) {
+            var tags = suffix.split('|');
+            var channelto = tags[0].replace(/[^0-9]/g, '');
+            var args = suffix.split(" ");
+            var name = args.shift();
+            if (!name) {
+                bot.sendMessage(msg.channel, cmdPrefix + "alias " + this.usage + "\n" + this.description);
+            } else if (commands[name] || name === "help") {
+                bot.sendMessage(msg.channel, "overwriting commands with aliases is not allowed!");
+            } else {
+                var command = args.shift();
+                aliases[name] = [command, args.join(" ")];
+                //now save the new alias
+                require("fs").writeFile("./alias.json", JSON.stringify(aliases, null, 2), null);
+                bot.sendMessage(msg.channel, "created alias " + name);
+            }
+        }
+        process: function(bot, msg, suffix) {
+            var tags = suffix.split('|');
+            var channelto = tags[0].replace(/[^0-9]/g, '');
+            bot.sendMessage(channelto,tags[1]);
+            Logger.log("info", suffix);
+        }
+    }*/
+
 };
 
 /*
